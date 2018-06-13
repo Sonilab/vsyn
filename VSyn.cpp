@@ -139,13 +139,13 @@ void VSyn::update(){
             float x2 = m.getArgAsFloat(3);
             float y2 = m.getArgAsFloat(4);
             float freq = m.getArgAsFloat(5);
-            float amp = m.getArgAsFloat(6);
+            float height = m.getArgAsFloat(6);
             float phase = m.getArgAsFloat(7);
             float thick = m.getArgAsFloat(8);
             
             if(uid < CONTAINER_MAX) // check the index is enable
             {
-                toWave(&shapes[uid] ,uid, x1, y1, x2, y2, freq, amp, phase, thick);
+                toWave(&shapes[uid] ,uid, x1, y1, x2, y2, freq, height, phase, thick);
             }
             
         } else if(m.getAddress() == "/color"){
@@ -288,7 +288,6 @@ void VSyn::initShapes(int max_num){
         pC->height = 0.0f;
         pC->angle = 0.0f;
         pC->freq = 0.0f;
-        pC->amp = 0.0f;
         pC->phase = 0.0f;
         pC->thick = 0.0f;
         pC->expose = 1.0f;
@@ -364,7 +363,7 @@ void VSyn::draw(){
                 break;
                 
             case WAVE:
-                vbo.wave(elm->x1, elm->y1, elm->x2, elm->y2, elm->freq, elm->amp, elm->phase, elm->thick);
+                vbo.wave(elm->x1, elm->y1, elm->x2, elm->y2, elm->freq, elm->height, elm->phase, elm->thick);
                 break;
                 
             default:

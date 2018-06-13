@@ -25,7 +25,6 @@ typedef struct shapeContainer {
     float height;
     float angle;
     float freq;
-    float amp;
     float phase;
     float expose;
     float thick;

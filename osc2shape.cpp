@@ -152,11 +152,12 @@ void toWave(shapeContainer *elm, int uid, float x1, float y1, float x2, float y2
     elm->x2 = x2;
     elm->y2 = y2;
     elm->freq = freq;
-    elm->amp = amp;
+    elm->height = amp;
     elm->phase = phase;
     
     elm->thick = thick;
-
+    
+    printf("%f\n" , elm->height);
     
 }
 
