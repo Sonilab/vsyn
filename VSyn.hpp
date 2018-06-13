@@ -14,7 +14,7 @@
 #include "ofxOsc.h"
 #include "shape.h"
 #include "osc2shape.hpp"
-#include "drawer.hpp"
+#include "ofxVboRenderer.hpp"
 #include "cam_func.hpp"
 #include "Particle.hpp"
 
@@ -38,6 +38,10 @@ class VSyn {
         int current_msg_string;
         string msg_strings[NUM_MSG_STRINGS];
         float timers[NUM_MSG_STRINGS];
+    
+        //VBO drawer
+        ofxVboRenderer vbo;
+    
         //Particle
         Particle particle;
     

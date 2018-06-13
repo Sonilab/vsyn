@@ -339,31 +339,31 @@ void VSyn::draw(){
         switch(elm->type){
                 
             case CIRCLE:
-                circle(elm->x1, elm->y1, elm->size, elm->fill);
+                vbo.circle(elm->x1, elm->y1, elm->size, elm->fill);
                 break;
                 
             case TRIANGLE:
-                triangle(elm->x1, elm->y1, elm->size, elm->angle, elm->fill);
+                vbo.triangle(elm->x1, elm->y1, elm->size, elm->angle, elm->fill);
                 break;
                 
             case SQUARE:
-                square(elm->x1, elm->y1, elm->size, elm->angle, elm->fill);
+                vbo.square(elm->x1, elm->y1, elm->size, elm->angle, elm->fill);
                 break;
                 
             case RECT:
-                rect(elm->x1, elm->y1, elm->x2, elm->y2, elm->angle, elm->fill);
+                vbo.rect(elm->x1, elm->y1, elm->x2, elm->y2, elm->angle, elm->fill);
                 break;
                 
             case LINE:
-                line(elm->x1, elm->y1, elm->x2, elm->y2, elm->thick);
+                vbo.line(elm->x1, elm->y1, elm->x2, elm->y2, elm->thick);
                 break;
                 
             case ARC:
-                arc(elm->x1, elm->y1, elm->x2, elm->y2, elm->height, elm->expose, elm->thick);
+                vbo.arc(elm->x1, elm->y1, elm->x2, elm->y2, elm->height, elm->expose, elm->thick);
                 break;
                 
             case WAVE:
-                wave(elm->x1, elm->y1, elm->x2, elm->y2, elm->freq, elm->amp, elm->phase, elm->thick);
+                vbo.wave(elm->x1, elm->y1, elm->x2, elm->y2, elm->freq, elm->amp, elm->phase, elm->thick);
                 break;
                 
             default:
@@ -387,7 +387,7 @@ void VSyn::initWindowSize(){
     int tmp_w = ofGetWidth();
     int tmp_h = ofGetHeight();
     
-    initCanvasSize(tmp_w, tmp_h);
+    vbo.setup(tmp_w, tmp_h);
     particle.screen_width = tmp_w;
     particle.screen_height = tmp_h;
     
