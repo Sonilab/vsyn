@@ -319,6 +319,7 @@ void VSyn::draw(){
     }
     
     
+    
     //drawing particle
     particle.draw();
     
@@ -373,6 +374,9 @@ void VSyn::draw(){
         
         
     }
+    
+    //Draw primitives
+    vbo.draw();
     
     if(cam_flg){
         ofPopMatrix();
