@@ -1,6 +1,5 @@
 //
 //  VboCircle.cpp
-//  vboCircle
 //
 //  Created by Hana on 2018/01/22.
 //
@@ -11,7 +10,7 @@
 constexpr float M_2XPI = M_PI * 2.0;
 
 VboCircleRenderer::VboCircleRenderer() {
-    lineWidth = 4.0;
+    lineWidth = 1.0;
 }
 
 void VboCircleRenderer::setup() {

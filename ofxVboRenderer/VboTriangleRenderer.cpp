@@ -13,7 +13,8 @@ constexpr double ROOT_3_DIV_3 = 0.57735;
 constexpr double ROOT_3_DIV_6 = 0.288675;
 
 VboTriangleRenderer::VboTriangleRenderer() {
-    lineWidth = 4.0;
+    lineWidth = 1.0;
+    color = 1.0;
 }
 
 void VboTriangleRenderer::setup() {
@@ -147,7 +148,7 @@ void VboTriangleRenderer::noFilledTriangle(ofVec2f p1, ofVec2f p2, ofVec2f p3)  
     addColor(false, color);
     
     
-    int vertIDBegin = noFillCounter.vertex;
+    int vertIDBegin = noFillCounter.index;
     
     addIndex(false, vertIDBegin);
     addIndex(false, vertIDBegin+1);
@@ -166,7 +167,7 @@ void VboTriangleRenderer::noFillTriangle(float x1, float y1, float x2, float y2,
         addColor(false, color);
     }
     
-    int vertIDBegin = noFillCounter.vertex;
+    int vertIDBegin = noFillCounter.index;
     
     addIndex(false, vertIDBegin);
     addIndex(false, vertIDBegin+1);

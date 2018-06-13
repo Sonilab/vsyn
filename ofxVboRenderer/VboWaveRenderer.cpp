@@ -29,7 +29,7 @@ void VboWave::set(float x1, float y1, float x2, float y2, float freq, float ampl
     ofVec2f currentPointOnLine = ofVec2f(0, 0);
 
     //First position
-    ofVec2f currentPos = start + line.getNormalized().rotate(90) * sin((phase * 2.0 * PI)) * width * amplitude;
+    ofVec2f currentPos = start + line.getNormalized().rotate(90) * sin((phase * 2.0 * PI)) * height * amplitude * 0.5;
     addVertex(currentPos);
     addColor(color);
 
@@ -38,7 +38,7 @@ void VboWave::set(float x1, float y1, float x2, float y2, float freq, float ampl
     for (float i = 1; i <= VBOWAVE_DIVISION; i += 1.0) {
         ap = i * VBOWAVE_DIVISION_RECIPRO;
         currentPointOnLine = line * ap + start;
-        currentPos = currentPointOnLine + line.getNormalized().rotate(90) * sin((ap * PI * 2 * freq) + (phase * 2 * PI)) * width * amplitude;
+        currentPos = currentPointOnLine + line.getNormalized().rotate(90) * sin((ap * PI * 2 * freq) + (phase * 2 * PI)) * height * amplitude * 0.5;
         addVertex(currentPos);
         addColor(color);
         addIndex(i - 1);

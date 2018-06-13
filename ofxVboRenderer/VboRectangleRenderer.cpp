@@ -1,6 +1,5 @@
 //
 //  VboRectangleRenderer.cpp
-//  example-simple
 //
 //  Created by Hana on 2018/04/25.
 //
