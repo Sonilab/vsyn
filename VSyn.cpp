@@ -14,7 +14,7 @@ void VSyn::setup(){
     
     ofBackground(0, 0, 0);
     ofSetCircleResolution(50);
-
+    
     //CAM SETUP
     cam_flg = false;
     pov.set(POV_INIT_X*ofGetWidth()*(-1), POV_INIT_Y*ofGetHeight(), POV_INIT_Z*ofGetWidth());
@@ -24,18 +24,18 @@ void VSyn::setup(){
     
     
     cout << "VSyn SETUP" << endl;
-    receiver.setup(PORT);    
+    receiver.setup(PORT);
     current_msg_string = 0;
     
     //Init Buffers for Graphics
     initColors(CONTAINER_MAX);
     initShapes(CONTAINER_MAX);
-
+    
 }
 
 
 void VSyn::update(){
-
+    
     // hide old messages
     for(int i = 0; i < NUM_MSG_STRINGS; i++){
         if(timers[i] < ofGetElapsedTimef()){
@@ -159,12 +159,12 @@ void VSyn::update(){
                 colors[uid].a = (char) ( 255.0f * m.getArgAsFloat(4) );
                 
             }
-
+            
         } else if(m.getAddress() == "/mute"){
             
             int uid =  m.getArgAsInt32(0);
             bool flg = (bool)m.getArgAsInt32(1);
-
+            
             
             if(uid < CONTAINER_MAX) // check the index is enable
             {
@@ -229,6 +229,16 @@ void VSyn::update(){
                     
             }
             
+        }else if(m.getAddress() == "/particle/attractor/size"){
+            
+            particle.attractor_size = m.getArgAsFloat(0);
+            
+        }else if(m.getAddress() == "/particle/range"){
+            
+            particle.range_x = m.getArgAsFloat(0);
+            particle.range_y = m.getArgAsFloat(1);
+            
+            
         }else {
             
             cout << "OSC :: unknown ADR :: " << m.getAddress() << endl;
@@ -236,12 +246,12 @@ void VSyn::update(){
         }
         
         
-   
+        
     }// end of while
-
+    
     
     particle.update();
-
+    
 }
 
 
@@ -261,9 +271,9 @@ void VSyn::initColors(int max_num){
 
 
 void VSyn::initShapes(int max_num){
-
+    
     for(int i=0; i<max_num; i++){
-
+        
         shapeContainer *pC = &shapes[i];
         pC->type = VOID;
         pC->active = true;
@@ -284,10 +294,10 @@ void VSyn::initShapes(int max_num){
         pC->expose = 1.0f;
         
         pC->fill = false;
-
+        
         
     }
-
+    
 }
 
 
@@ -307,11 +317,11 @@ void VSyn::draw(){
         ofScale(1, -1); //Invert Y only
         
     }
-
-
+    
+    
     //drawing particle
     particle.draw();
-
+    
     
     
     for(int i=0; i<CONTAINER_MAX; i++){
@@ -319,7 +329,7 @@ void VSyn::draw(){
         shapeContainer *elm = &shapes[i];
         //Set Color
         ofSetColor(colors[i]);
-
+        
         if ( !elm->active || elm->type == VOID){
             
             continue;
@@ -335,23 +345,23 @@ void VSyn::draw(){
             case TRIANGLE:
                 triangle(elm->x1, elm->y1, elm->size, elm->angle, elm->fill);
                 break;
-
+                
             case SQUARE:
                 square(elm->x1, elm->y1, elm->size, elm->angle, elm->fill);
                 break;
-
+                
             case RECT:
                 rect(elm->x1, elm->y1, elm->x2, elm->y2, elm->angle, elm->fill);
                 break;
-
+                
             case LINE:
                 line(elm->x1, elm->y1, elm->x2, elm->y2, elm->thick);
                 break;
-
+                
             case ARC:
                 arc(elm->x1, elm->y1, elm->x2, elm->y2, elm->height, elm->expose, elm->thick);
                 break;
-
+                
             case WAVE:
                 wave(elm->x1, elm->y1, elm->x2, elm->y2, elm->freq, elm->amp, elm->phase, elm->thick);
                 break;
