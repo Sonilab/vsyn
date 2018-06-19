@@ -31,13 +31,13 @@ public:
     void gravityMotion();
     
     static constexpr float PARTICLE_ALPHA_DEFAULT = 0.8;
-    static constexpr float BROWN_COEF = 0.001;
-    static constexpr float MOD_COEF = 0.0003;
-    static constexpr float SPEED_COEF = 0.01;
+    static constexpr float BROWN_COEF = 0.0008;
+    static constexpr float BROWN_SPEED_COEF = 3.0;
     static constexpr float BUBBLE_SPD_ACC = -0.000005;
     static constexpr float BUBBLE_SPD_LIMIT = -0.008;
+    static constexpr float GRAVITY_MOD_COEF = 0.00005;
     static constexpr float GRAVITY_SPD_LIMIT = 0.002;
-    static constexpr float ATTRACTOR_A = -0.00003;
+    static constexpr float GRAVITY_ATTRACTOR_A = -0.00001;
     static const int MAX = 15000;   //particle max num
     
     //particles

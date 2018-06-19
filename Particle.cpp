@@ -32,7 +32,7 @@ void Particle :: setup(int w, int h){
     
     //bubble
     for(int i = 0; i < MAX; i++){
-        bubble_range[i] = ofRandom(0.01, 0.005);
+        bubble_range[i] = ofRandom(0.01, 0.001);
     }
     theta = 0.0;
     
@@ -118,12 +118,11 @@ void Particle :: draw(){
 }
 
 void Particle :: brownMotion(){
-    float coef = lfo * (speed + 1.0) * BROWN_COEF;
+    float coef = lfo * (speed * BROWN_SPEED_COEF + 1.0) * BROWN_COEF;
     
     for(int i = 0; i < MAX; i++){
         vel[i].set(coef * ofRandom(-1.0, 1.0), coef * ofRandom(-1.0, 1.0));
         pos[i] += vel[i];
-        
     }
     
 }
@@ -164,8 +163,8 @@ void Particle :: gravityMotion(){
         if(dist < 100.0 && vel[i].length() > GRAVITY_SPD_LIMIT){
             vel[i] = vel[i].normalize() * GRAVITY_SPD_LIMIT;
         }
-        vel[i].x += ATTRACTOR_A * speed * cos(theta) + lfo * MOD_COEF * ofRandom(-1.0, 1.0);
-        vel[i].y += ATTRACTOR_A * speed * sin(theta) + lfo * MOD_COEF * ofRandom(-1.0, 1.0);
+        vel[i].x += GRAVITY_ATTRACTOR_A * (speed + 1.0) * cos(theta) + lfo * GRAVITY_MOD_COEF * ofRandom(-1.0, 1.0);
+        vel[i].y += GRAVITY_ATTRACTOR_A * (speed + 1.0) * sin(theta) + lfo * GRAVITY_MOD_COEF * ofRandom(-1.0, 1.0);
         
         pos[i] += vel[i];
     }
