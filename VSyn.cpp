@@ -198,9 +198,9 @@ void VSyn::update(){
             
             particle.attractor_y = m.getArgAsFloat(0) * ofGetHeight();
             
-        }else if(m.getAddress() == "/particle/modulation"){
+        }else if(m.getAddress() == "/particle/lfo"){
             
-            particle.modulation = m.getArgAsFloat(0);
+            particle.lfo = m.getArgAsFloat(0);
             
         }else if(m.getAddress() == "/particle/size"){
             
@@ -217,27 +217,30 @@ void VSyn::update(){
             switch (flg){
                     
                 case 0:
-                    particle.mode = BROWNIAN;
+                    particle.mode = BROWN;
                     break;
                 case 1:
-                    particle.mode = GRAVITY;
+                    particle.mode = BUBBLE;
+                    particle.bubbleInit();
                     break;
                 case 2:
-                    particle.mode = GATHERING;
+                    particle.mode = GRAVITY;
                     break;
                     
                     
             }
             
-        }else if(m.getAddress() == "/particle/attractor/size"){
+        }else if(m.getAddress() == "/particle/speed"){
             
-            particle.attractor_size = m.getArgAsFloat(0);
+            particle.speed = m.getArgAsFloat(0);
             
         }else if(m.getAddress() == "/particle/range"){
             
             particle.range_x = m.getArgAsFloat(0);
             particle.range_y = m.getArgAsFloat(1);
             
+        }else if(m.getAddress() == "/particle/mute"){
+            particle.mute = bool(m.getArgAsInt(0));
             
         }else {
             
