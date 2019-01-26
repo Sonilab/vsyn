@@ -32,6 +32,8 @@ class VSyn {
         void draw();
         void initWindowSize();
     
+        void drawStrings(float x1, float y1, float size, string str);
+    
         shapeContainer shapes[CONTAINER_MAX];
         ofColor colors[CONTAINER_MAX];
         ofxOscReceiver receiver;
@@ -55,6 +57,12 @@ class VSyn {
     private:
         void initShapes(int max_num);
         void initColors(int max_num);
+    
+        ofTrueTypeFont font;
+        static const int FONT_DPI = 512;
+        static const int DEFALUT_FONT_SIZE = 18;
+        static constexpr float DEFAULT_FONT_SIZE_PER_Y = 3.;    //need to fix
+//        static constexpr float
     
 };
 

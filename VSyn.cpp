@@ -31,6 +31,15 @@ void VSyn::setup(){
     initColors(CONTAINER_MAX);
     initShapes(CONTAINER_MAX);
     
+    //init font
+    font.setGlobalDpi(FONT_DPI);
+//    font.load("Helvetica.ttf", 18);
+    font.load(OF_TTF_SANS, DEFALUT_FONT_SIZE, true, true, true);
+//    bool ofTrueTypeFont::load(const std::string& _filename, int _fontSize, bool _bAntiAliased, bool _bFullCharacterSet, bool _makeContours, float _simplifyAmt, int _dpi) {
+
+//    font.setLineHeight(24);
+    font.setLetterSpacing(1.0);
+    
 }
 
 
@@ -384,6 +393,10 @@ void VSyn::draw(){
                 vbo.wave(elm->x1, elm->y1, elm->x2, elm->y2, elm->freq, elm->height, elm->phase, elm->thick);
                 break;
                 
+            case STR:
+                drawStrings(elm->x1, elm->y1, elm->size, elm->str);
+                break;
+                
             default:
                 break;
                 
@@ -414,3 +427,16 @@ void VSyn::initWindowSize(){
     
     
 }
+
+void VSyn::drawStrings(float x1, float y1, float size, string str){
+    int tmp_w = ofGetWidth();
+    int tmp_h = ofGetHeight();
+    ofPushMatrix();
+    ofTranslate(tmp_w * x1, tmp_h * y1);
+    ofScale((0.05 + size * size * size * DEFAULT_FONT_SIZE_PER_Y) * tmp_h, (0.05 + size * size * size * DEFAULT_FONT_SIZE_PER_Y)* tmp_h);
+    ofScale(1.0 / float(FONT_DPI), 1.0 / float(FONT_DPI));
+    ofTranslate(-font.stringWidth(str) * 0.5, font.stringHeight(str) * 0.5);
+    font.drawStringAsShapes(str, 0, 0);
+    ofPopMatrix();
+}
+
