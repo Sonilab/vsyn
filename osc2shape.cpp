@@ -160,3 +160,18 @@ void toWave(shapeContainer *elm, int uid, float x1, float y1, float x2, float y2
     
 }
 
+
+void toString(shapeContainer *elm, int uid, float x1, float y1, float size, string str){
+    
+    //Set System Params
+    elm->type = STR;
+    elm->uid = uid;
+    elm->size = size;
+    //Shape data (position, size etc)
+    elm->x1 = x1;
+    elm->y1 = y1;
+    elm->str = str;
+    
+    
+}
+

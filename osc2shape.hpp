@@ -31,4 +31,6 @@ void toArc(shapeContainer *elm, int uid, float x1, float y1, float x2, float y2,
 
 void toWave(shapeContainer *elm, int uid, float x1, float y1, float x2, float y2, float freq, float amp, float phase, float thick);
 
+void toString(shapeContainer *elm, int uid, float x1, float y1, float size, string str);
+
 #endif /* osc2shape_hpp */

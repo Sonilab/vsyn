@@ -241,6 +241,21 @@ void VSyn::update(){
             
         }else if(m.getAddress() == "/particle/mute"){
             particle.mute = bool(m.getArgAsInt(0));
+
+            
+        }else if(m.getAddress() == "/string"){
+            
+            int uid = m.getArgAsInt32(0);
+            float x = m.getArgAsFloat(1);
+            float y = m.getArgAsFloat(2);
+            float size = m.getArgAsFloat(3);
+            string str = m.getArgAsString(4);
+            
+            if(uid < CONTAINER_MAX) // check the index is enable
+            {
+                toString(&shapes[uid] ,uid, x, y, size, str);
+            }
+            
             
         }else {
             
