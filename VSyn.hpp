@@ -61,7 +61,7 @@ class VSyn {
         ofTrueTypeFont font;
         static const int FONT_DPI = 512;
         static const int DEFALUT_FONT_SIZE = 18;
-        static constexpr float DEFAULT_FONT_SIZE_PER_Y = 3.;    //need to fix
+        static constexpr float DEFAULT_FONT_SIZE_PER_Y = 5.;    //need to fix
 //        static constexpr float
     
 };
